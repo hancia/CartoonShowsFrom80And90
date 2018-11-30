@@ -1,0 +1,535 @@
+package com.drools.cartoons
+import java.util.Scanner
+import java.util.Arrays
+import com.drools.cartoons.Result
+import java.util.Collections;
+
+rule "Init"
+    when
+    then
+        Question newQuestion = new Question("A cartoon based on a video game?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Based on a video game positive"
+    when
+        q: Question(getQuestion() == "A cartoon based on a video game?", getAnswer() == "Yes")
+    then
+        Question newQuestion = new Question("A Nintendo franchise?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Based on a video game negative"
+    when
+        q: Question(getQuestion() == "A cartoon based on a video game?", getAnswer() == "No")
+    then
+        Question newQuestion = new Question("A celebrity?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Nintendo franchise positive"
+    when
+        q: Question(getQuestion() == "A Nintendo franchise?", getAnswer() == "Yes")
+    then
+        Result result = new Result(Arrays.asList("The Super Mario Bros. Super Show",
+                                                 "Captain N The Game Master",
+                                                 "The Adventures of Super Mario Bros. 3",
+                                                 "Super Mario World",
+                                                 "The Legend of Zelda",
+                                                 "Pokemon"));
+        result.showCartoons();
+    end
+
+rule "Nintendo franchise negative"
+    when
+        q: Question(getQuestion() == "A Nintendo franchise?", getAnswer() == "No")
+    then
+        Result result = new Result(Arrays.asList("Adventures of Sonic the Hedgehog",
+                                                 "Mega Man",
+                                                 "Mortal Kombat Defenders of the Realm",
+                                                 "Double Dragon",
+                                                 "Wing Commander Academy",
+                                                 "Street Fighter"));
+        result.showCartoons();
+    end
+
+rule "A celebrity positive"
+    when
+        q: Question(getQuestion() == "A celebrity?", getAnswer() == "Yes")
+    then
+        Result result = new Result(Arrays.asList("Chuck Norris: Karate Kommandos",
+                                                 "Mister T"));
+        result.showCartoons();
+    end
+
+rule "A celebrity negative"
+    when
+        q: Question(getQuestion() == "A celebrity?", getAnswer() == "No")
+    then
+        Question newQuestion = new Question("Animals, furries, and the like?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Animals, furries, and the like positive"
+    when
+        q: Question(getQuestion() == "Animals, furries, and the like?", getAnswer() == "Yes")
+    then
+        Question newQuestion = new Question("Cats?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Animals, furries, and the like negative"
+    when
+        q: Question(getQuestion() == "Animals, furries, and the like?", getAnswer() == "No")
+    then
+        Question newQuestion = new Question("Do you dig giant robots?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Cats positive"
+    when
+        q: Question(getQuestion() == "Cats?", getAnswer() == "Yes")
+    then
+        Result result = new Result(Arrays.asList("ThunderCats",
+                                                 "Swat Kats"));
+        result.showCartoons();
+    end
+
+rule "Cats negative"
+    when
+        q: Question(getQuestion() == "Cats?", getAnswer() == "No")
+    then
+        Question newQuestion = new Question("Rodents?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Rodents positive"
+    when
+        q: Question(getQuestion() == "Rodents?", getAnswer() == "Yes")
+    then
+        Result result = new Result(Arrays.asList("Biker Mice from Mars",
+                                                 "Danger Mouse",
+                                                 "Chip N Dale Rescue Rangers"));
+        result.showCartoons();
+    end
+
+    rule "Rodents negative"
+    when
+        q: Question(getQuestion() == "Rodents?", getAnswer() == "No")
+    then
+        Question newQuestion = new Question("Dinosaurs?");
+        newQuestion.getAnswerFromUser();
+        insert(newQuestion);
+    end
+
+rule "Dinosaurs positive"
+   when
+       q: Question(getQuestion() == "Dinosaurs?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Dinosaucers",
+                                                "Cadillacs and Dinosaurs",
+                                                "Extreme Dinosaurs",
+                                                "Dino Riders"));
+       result.showCartoons();
+   end
+
+rule "Dinosaurs negative"
+   when
+       q: Question(getQuestion() == "Dinosaurs?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Ducks?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Ducks positive"
+   when
+       q: Question(getQuestion() == "Ducks?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Count Duckula",
+                                                "Duck Tales",
+                                                "Darkwing Duck"));
+       result.showCartoons();
+   end
+
+rule "Ducks negative"
+   when
+       q: Question(getQuestion() == "Ducks?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Bears?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Bears positive"
+   when
+       q: Question(getQuestion() == "Bears?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("TaleSpin",
+                                                "Disney's Adventures of Gummy Bears",
+                                                "The Care Bears"));
+       result.showCartoons();
+   end
+
+rule "Bears negative"
+   when
+       q: Question(getQuestion() == "Bears?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Monkeys?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Monkeys positive"
+   when
+       q: Question(getQuestion() == "Monkeys?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Collections.singletonList("Captain Siman and the Space Monkeys"));
+       result.showCartoons();
+   end
+
+rule "Monkeys negative"
+   when
+       q: Question(getQuestion() == "Monkeys?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Cows?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Cows positive"
+   when
+       q: Question(getQuestion() == "Cows?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Collections.singletonList("Wild West Cowboys of Moo Mesa"));
+       result.showCartoons();
+   end
+
+rule "Cows negative"
+   when
+       q: Question(getQuestion() == "Cows?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Godless abominations?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Godless abominations positive"
+   when
+       q: Question(getQuestion() == "Godless abominations?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Smurfs",
+                                                "Snorks"));
+       result.showCartoons();
+   end
+
+rule "Godless abominations negative"
+   when
+       q: Question(getQuestion() == "Godless abominations?", getAnswer() == "No")
+   then
+       Result result = new Result(Arrays.asList("Teenage Mutant Ninja Turtles",
+                                                "Street Sharks",
+                                                "Gargoyles"));
+       result.showCartoons();
+   end
+
+rule "Giant robots positive"
+   when
+       q: Question(getQuestion() == "Do you dig giant robots?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Robotech",
+                                                "Voltron",
+                                                "Transformers"));
+       result.showCartoons();
+   end
+
+rule "Giant robots negative"
+   when
+       q: Question(getQuestion() == "Do you dig giant robots?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("A cartoon based on a movie?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Based on a movie positive"
+   when
+       q: Question(getQuestion() == "A cartoon based on a movie?", getAnswer() == "Yes")
+   then
+       Question newQuestion = new Question("An R-rated movie?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Based on a movie negative"
+   when
+       q: Question(getQuestion() == "A cartoon based on a movie?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Do you want a post-apocalyptic setting?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "An R-rated movie positive"
+   when
+       q: Question(getQuestion() == "An R-rated movie?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Rambo and the Force of Freedom",
+                                                "Robocop: The Animated Series",
+                                                "Highlander: The Animated Series"));
+       result.showCartoons();
+   end
+
+rule "An R-rated movie negative"
+   when
+       q: Question(getQuestion() == "An R-rated movie?", getAnswer() == "No")
+   then
+       Result result = new Result(Arrays.asList("James Bond Jr",
+                                                "The Real Ghostbusters",
+                                                "Extreme Ghostbusters",
+                                                "Star Wars: Ewoks",
+                                                "Star Wars: Droids"));
+       result.showCartoons();
+   end
+
+rule "Post-apocalyptic setting positive"
+   when
+       q: Question(getQuestion() == "Do you want a post-apocalyptic setting?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Cadillacs and Dinosaurs",
+                                                "Spiral Zone",
+                                                "Highlander: The Animated Series"));
+       result.showCartoons();
+   end
+
+rule "Post-apocalyptic setting negative"
+   when
+       q: Question(getQuestion() == "Do you want a post-apocalyptic setting?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Swords and sorcery?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Swords and sorcery positive"
+   when
+       q: Question(getQuestion() == "Swords and sorcery?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("The Pirates of Dark Water",
+                                                "Thundarr and Barbarian",
+                                                "Visionaries",
+                                                "Dungeons and Dragons",
+                                                "She-Ra Princess of Power",
+                                                "He-Man and the Masters of the Universe",
+                                                "Conan the Adventurer",
+                                                "King Arthur and the Knights of Justice"));
+       result.showCartoons();
+   end
+
+rule "Swords and sorcery negative"
+   when
+       q: Question(getQuestion() == "Swords and sorcery?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Military and law enforcement?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Military and law enforcement positive"
+   when
+       q: Question(getQuestion() == "Military and law enforcement?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("C.O.P.S",
+                                                "G.I: Joe",
+                                                "M.A.S.K",
+                                                "Exosquad",
+                                                "Spiral Zone",
+                                                "Centurions",
+                                                "Sam and Max: Freelance Police",
+                                                "Inspector Gadget",
+                                                "BraveStarr",
+                                                "The Adventures of the Galaxy Rangers",
+                                                "Sky Commanders",
+                                                "SilverHawks"));
+       result.showCartoons();
+   end
+
+rule "Military and law enforcement negative"
+   when
+       q: Question(getQuestion() == "Military and law enforcement?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Space?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Space positive"
+   when
+       q: Question(getQuestion() == "Space?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Captain Siman and the Space Monkeys",
+                                                "Jayce and th Wheeled Warriors",
+                                                "Exosquad",
+                                                "BraveStarr",
+                                                "The Adventures of the Galaxy Rangers",
+                                                "SilverHawks"));
+       result.showCartoons();
+   end
+
+rule "Space negative"
+   when
+       q: Question(getQuestion() == "Space?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Cowboys?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Cowboys positive"
+   when
+       q: Question(getQuestion() == "Cowboys?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Wild Wes Cowboys of Moo Mesa",
+                                                "BraveStarr",
+                                                "The Adventures of the Galaxy Rangers"));
+       result.showCartoons();
+   end
+
+rule "Cowboys negative"
+   when
+       q: Question(getQuestion() == "Cowboys?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Do you want to understand what's going on?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Understand what's going on positive"
+   when
+       q: Question(getQuestion() == "Do you want to understand what's going on?", getAnswer() == "Yes")
+   then
+       Question newQuestion = new Question("Kids doing awesome stuff?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Understand what's going on negative"
+   when
+       q: Question(getQuestion() == "Do you want to understand what's going on?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("In an awesome way?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "In an awesome way positive"
+   when
+       q: Question(getQuestion() == "In an awesome way?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Collections.singletonList("Inhumanoids"));
+       result.showCartoons();
+   end
+
+rule "In an awesome way negative"
+   when
+       q: Question(getQuestion() == "In an awesome way?", getAnswer() == "No")
+   then
+       Result result = new Result(Collections.singletonList("Aeon Flux"));
+       result.showCartoons();
+   end
+
+rule "Kids doing awesome stuff positive"
+   when
+       q: Question(getQuestion() == "Kids doing awesome stuff?", getAnswer() == "Yes")
+   then
+       Question newQuestion = new Question("In an educational manner?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Kids doing awesome stuff negative"
+   when
+       q: Question(getQuestion() == "Kids doing awesome stuff?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Do you like computers?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "In an educational manner positive"
+   when
+       q: Question(getQuestion() == "In an educational manner?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("The Magic School Bus",
+                                                "Captain Planet and the Planeteers"));
+       result.showCartoons();
+   end
+
+rule "In an educational manner negative"
+   when
+       q: Question(getQuestion() == "In an educational manner?", getAnswer() == "No")
+   then
+       Result result = new Result(Arrays.asList("Bionic six",
+                                                "The Real Adventures of Johnny Quest",
+                                                "Mighty Max"));
+       result.showCartoons();
+   end
+
+rule "Like computers positive"
+   when
+       q: Question(getQuestion() == "Do you like computers?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Collections.singletonList("ReBoot"));
+       result.showCartoons();
+   end
+
+rule "Like computers negative"
+   when
+       q: Question(getQuestion() == "Do you like computers?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("Something truly outrageous?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Something truly outrageous positive"
+   when
+       q: Question(getQuestion() == "Something truly outrageous?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Collections.singletonList("Jem"));
+       result.showCartoons();
+   end
+
+rule "Something truly outrageous negative"
+   when
+       q: Question(getQuestion() == "Something truly outrageous?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("The undead?");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
+
+rule "Undead positive"
+   when
+       q: Question(getQuestion() == "The undead?", getAnswer() == "Yes")
+   then
+       Result result = new Result(Arrays.asList("Mummies Alive",
+                                                "Skeleton Warriors"));
+       result.showCartoons();
+   end
+
+rule "Undead negative"
+   when
+       q: Question(getQuestion() == "The undead?", getAnswer() == "No")
+   then
+       Question newQuestion = new Question("The world of David the Gnome");
+       newQuestion.getAnswerFromUser();
+       insert(newQuestion);
+   end
