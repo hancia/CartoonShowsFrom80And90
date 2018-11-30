@@ -1,6 +1,5 @@
 package com.drools.cartoons;
 
-
 import java.util.Scanner;
 
 public class Question {

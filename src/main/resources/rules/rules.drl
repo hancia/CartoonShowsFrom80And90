@@ -529,7 +529,6 @@ rule "Undead negative"
    when
        q: Question(getQuestion() == "The undead?", getAnswer() == "No")
    then
-       Question newQuestion = new Question("The world of David the Gnome");
-       newQuestion.getAnswerFromUser();
-       insert(newQuestion);
+       Result result = new Result(Collections.singletonList("The world of David the Gnome"));
+       result.showCartoons();
    end
