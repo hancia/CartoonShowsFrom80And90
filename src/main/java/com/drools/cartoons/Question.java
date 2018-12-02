@@ -1,7 +1,5 @@
 package com.drools.cartoons;
 
-import java.util.Scanner;
-
 public class Question {
     private String question = "";
     private String answer = "";
@@ -22,8 +20,12 @@ public class Question {
 
     public void getAnswerFromUser(){
         System.out.println(this.question);
-        Scanner in = new Scanner(System.in);
-        this.answer = in.nextLine();
+        System.out.println("Awaiting user's response");
+
+        Decision decision = Cartoons.goji.answerQuestion(this);
+        System.out.println(decision.getValue());
+
+        this.answer = decision.getValue();
     }
 
     public void setAnswer(String answer) { this.answer = answer; }

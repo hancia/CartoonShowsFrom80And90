@@ -16,5 +16,7 @@ public class Result {
     public void showCartoons(){
         for(String ans : this.getCartoons())
             System.out.println(ans);
+
+        Cartoons.goji.showCartoons(cartoons);
     }
 }
