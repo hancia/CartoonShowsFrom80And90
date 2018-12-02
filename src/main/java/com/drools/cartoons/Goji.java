@@ -87,17 +87,18 @@ public class Goji {
         question = new JTextField();
         question.setEnabled(false);
         question.setVisible(true);
-        question.setSize(300, 50);
-        question.setLocation(150, 0);
+        question.setSize(600, 50);
+        question.setLocation(0, 0);
         question.setFont(new Font("Serif", Font.PLAIN, 16));
+        question.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
     private void spawnCartoons() {
         cartoons = new JTextArea();
         cartoons.setEnabled(false);
         cartoons.setVisible(true);
-        cartoons.setSize(500, 150);
-        cartoons.setLocation(50, 200);
+        cartoons.setSize(500, 250);
+        cartoons.setLocation(50, 150);
         cartoons.setFont(new Font("Serif", Font.PLAIN, 16));
     }
 
