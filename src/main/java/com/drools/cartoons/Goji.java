@@ -74,7 +74,7 @@ public class Goji {
     }
 
     private void spawnNoButton() {
-        no = new JButton("no");
+        no = new JButton("No");
         no.setVisible(true);
         no.setSize(100, 50);
         no.setLocation(250, 100);
